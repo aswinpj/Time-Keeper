@@ -1,3 +1,7 @@
+-- Created as an Answer to the software recommendations stack exchange question
+-- V1
+-- This is a modified version of the basic template found on the videoLAN page
+
 function descriptor()
    return {
       title = "Time Keeper",
@@ -49,6 +53,7 @@ function menu()
 end
 
 function create_dialog()
+   -- Create a Dialog box
    w = vlc.dialog("Time Keeper")
    w1 = w:add_text_input("", 1, 1, 3, 1)
    w2 = w:add_text_input("", 1, 2, 3, 1)
@@ -57,7 +62,7 @@ function create_dialog()
 end
 
 function click_Action()
-
+   -- Function to seek the video to the calculated seconds
    duration  = vlc.input.item():duration()
    trackHour,trackMinutes,trackSeconds = durationCalculator(duration)
    startTime = w1:get_text()
@@ -77,6 +82,7 @@ end
 
 
 function durationCalculator(duration)
+   
       -- Returns the result in hours minutes and seconds
       hours = math.floor(duration/3600)
       minutesResidue = duration - math.floor(duration/3600)*3600
@@ -87,6 +93,7 @@ function durationCalculator(duration)
 end
 
 function split(inputstr, sep)
+   -- Function to mimic the python "split" function
         if sep == nil then
                 sep = "%s"
         end
